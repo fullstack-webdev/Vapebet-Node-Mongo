@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title>Bitcoin Casino - Vapebet</title>
+    <meta name="keywords" content="{{ pkg.keywords.join(',') }}">
+    <meta name="description" content="{{ pkg.description }}">
+
+    {% block head %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/blackjack.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-growl/1.0.0/jquery.bootstrap-growl.min.js"></script>
+    <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js"></script>
+    <script type="text/javascript">
+        CONFIG = {
+            playerId: {% if req.user %}'{{req.user.id}}'{% else %}''{% endif %},
+            hostUrl: '{{host_url}}',
+            balance: {% if req.user %}{{req.user[req.user.balanceType].balance}}{% else %}1000{% endif %},
+            minBet: {% if req.user %}{{req.user[req.user.balanceType].minBet}}{% else %}1{% endif %},
+            maxBet: {% if req.user %}{{req.user[req.user.balanceType].maxBet}}{% else %}1000{% endif %},
+            balanceType: {% if req.user %}'{{req.user.balanceType}}'{% else %}'free'{% endif %},
+            currency: {% if req.user %}'{{req.user.currency}}'{% else %}'Play Money'{% endif %},
+            playGame: {% if req.user %}'{{req.user.playGame}}'{% else %}'blackjack'{% endif %}
+        };
+    </script>
+    {% endblock %}
+  </head>

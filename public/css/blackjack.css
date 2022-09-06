@@ -1,0 +1,225 @@
+@-webkit-keyframes card-arrow
+{
+    0% {
+        -webkit-transform:translateY(0);
+        -moz-transform:translateY(0);
+        -o-transform:translateY(0);
+        -ms-transform:translateY(0);
+        transform:translateY(0)
+    }
+    50%{
+        -webkit-transform:translateY(5px);
+        -moz-transform:translateY(5px);
+        -o-transform:translateY(5px);
+        -ms-transform:translateY(5px);
+        transform:translateY(5px)}
+    100%{
+        -webkit-transform:translateY(0);
+        -moz-transform:translateY(0);
+        -o-transform:translateY(0);
+        -ms-transform:translateY(0);
+        transform:translateY(0)
+    }
+}
+@-moz-keyframes card-arrow
+{
+    0% {
+        -webkit-transform:translateY(0);
+        -moz-transform:translateY(0);
+        -o-transform:translateY(0);
+        -ms-transform:translateY(0);
+        transform:translateY(0)
+    }
+    50%{
+        -webkit-transform:translateY(5px);
+        -moz-transform:translateY(5px);
+        -o-transform:translateY(5px);
+        -ms-transform:translateY(5px);
+        transform:translateY(5px)}
+    100%{
+        -webkit-transform:translateY(0);
+        -moz-transform:translateY(0);
+        -o-transform:translateY(0);
+        -ms-transform:translateY(0);
+        transform:translateY(0)
+    }
+}
+@-o-keyframes card-arrow
+{
+    0% {
+        -webkit-transform:translateY(0);
+        -moz-transform:translateY(0);
+        -o-transform:translateY(0);
+        -ms-transform:translateY(0);
+        transform:translateY(0)
+    }
+    50%{
+        -webkit-transform:translateY(5px);
+        -moz-transform:translateY(5px);
+        -o-transform:translateY(5px);
+        -ms-transform:translateY(5px);
+        transform:translateY(5px)}
+    100%{
+        -webkit-transform:translateY(0);
+        -moz-transform:translateY(0);
+        -o-transform:translateY(0);
+        -ms-transform:translateY(0);
+        transform:translateY(0)
+    }
+}
+@-ms-keyframes card-arrow
+{
+    0% {
+        -webkit-transform:translateY(0);
+        -moz-transform:translateY(0);
+        -o-transform:translateY(0);
+        -ms-transform:translateY(0);
+        transform:translateY(0)
+    }
+    50%{
+        -webkit-transform:translateY(5px);
+        -moz-transform:translateY(5px);
+        -o-transform:translateY(5px);
+        -ms-transform:translateY(5px);
+        transform:translateY(5px)}
+    100%{
+        -webkit-transform:translateY(0);
+        -moz-transform:translateY(0);
+        -o-transform:translateY(0);
+        -ms-transform:translateY(0);
+        transform:translateY(0)
+    }
+}
+@keyframes card-arrow
+{
+    0% {
+        -webkit-transform:translateY(0);
+        -moz-transform:translateY(0);
+        -o-transform:translateY(0);
+        -ms-transform:translateY(0);
+        transform:translateY(0)
+    }
+    50%{
+        -webkit-transform:translateY(5px);
+        -moz-transform:translateY(5px);
+        -o-transform:translateY(5px);
+        -ms-transform:translateY(5px);
+        transform:translateY(5px)}
+    100%{
+        -webkit-transform:translateY(0);
+        -moz-transform:translateY(0);
+        -o-transform:translateY(0);
+        -ms-transform:translateY(0);
+        transform:translateY(0)
+    }
+}
+.g-playfield {
+    position: absolute;
+    top: 0;
+    bottom: 51px;
+    width: 100%;
+    text-align: center;
+    zoom: 1;
+    margin-bottom: 80px;
+}
+.g-playfield:before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+.g-playfield .game-area {
+    margin: 30px;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+#dealer-area, #player-area {
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+    height: 180px;
+}
+#player-cards-1 .card,
+#player-cards-2 .card,
+#player-cards-3 .card,
+#player-cards-4 .card,
+#dealer-cards .card {
+    -webkit-backface-visibility: hidden;
+    -webkit-transition: all 300ms ease-in-out;
+    -khtml-transition: all 300ms ease-in-out;
+    -moz-transition: all 300ms ease-in-out;
+    -ms-transition: all 300ms ease-in-out;
+    -o-transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out;
+}
+.dealer-cards-wrap, .player-cards-wrap {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 35px;
+}
+.player-cards-wrap {
+    margin-right: 10px;
+}
+.card-arrow {
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 15px solid #fff;
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    margin-left: -15px;
+    display: none;
+    -webkit-animation: card-arrow 800ms linear infinite;
+    -moz-animation: card-arrow 800ms linear infinite;
+    -o-animation: card-arrow 800ms linear infinite;
+    -ms-animation: card-arrow 800ms linear infinite;
+    animation: card-arrow 800ms linear infinite;
+}
+.card-score {
+    color: #ddd;
+    background: #2b2b2b;
+    font-size: 14px;
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+    visibility: hidden;
+}
+#game-result{
+    text-align: center;
+    font-size: 125%;
+    height: 40px;
+}
+#game-result div {
+    background: #fff;
+    font-weight: bold;
+    display: inline-block;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: 5px 8px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    white-space: nowrap;
+    margin-right: 15px;
+    -webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+#game-result div:last-child{
+    margin-right: 0;
+}
+#game-result .win {
+    color: #25950f;
+    font-weight: bold;
+}
+#game-result .lose {
+    color: #ce1010;
+    font-weight: bold;
+}

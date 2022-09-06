@@ -1,0 +1,24 @@
+<script type="text/javascript">
+    {% if (info && info.length) %}
+        {% for inf in info %}
+            Utils.showNotification('{{ inf }}');
+        {% endfor %}
+    {% endif %}
+
+    {% if (success && success.length) %}
+        {% for succ in success %}
+            Utils.showNotification('{{ succ }}');
+        {% endfor %}
+    {% endif %}
+
+    {% if (warning && warning.length) %}
+        {% for warn in warning %}
+            Utils.showNotification('{{ warn }}');
+        {% endfor %}
+    {% endif %}
+    {% if (errors && errors.length) %}
+        {% for error in errors %}
+            Utils.showNotification('{{ error }}');
+        {% endfor %}
+    {% endif %}
+</script>

@@ -1,0 +1,99 @@
+  {% include '../includes/head.html' %}
+  
+  <body>
+    {% include '../includes/header.html' %}
+    <div class="g-container">
+       {% block main %}{% endblock %}
+       {% block footer %}{% endblock %}
+    </div>
+    {% block modals %}{% endblock %}
+    <script src="/socket/socket.io.min.js"></script>
+    <script src="/app.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            main({{page}});
+        });
+    </script>
+    {% include '../includes/messages.html' %}
+
+    <!-- Choose Game Play Mode -->
+    <div class="modal fade" id="choose-mode-modal" tabindex="-1" role="dialog" aria-labelledby="cmModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="cmModalLabel">Choose your play mode</h4>
+                </div>
+                <div class="modal-body">
+                    <a id="chose-btc-play" class="btn btn-btc-play" href="#">Play for Bitcoins</a>
+                    <a id="chose-practice-play" class="btn btn-practice-play" href="#" onclick="$('#choose-mode-modal').modal('hide');">Practice Mode</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Provably Fair Modal -->
+    <div class="modal fade" id="provably-fair-modal" tabindex="-1" role="dialog" aria-labelledby="pfModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="pfModalLabel">Provably Fair</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <h4>Last Shuffle</h4>
+                        <div class="form-group">
+                            <label for="client-seed" class="col-sm-4 control-label">Client seed:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="client-seed" readonly="readonly">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="hash-secret" class="col-sm-4 control-label">Hash secret:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="hash-secret" readonly="readonly">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="server-seed" class="col-sm-4 control-label">Server seed:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="server-seed" readonly="readonly">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="initial-shuffle" class="col-sm-4 control-label">Initial shuffle:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="initial-shuffle" readonly="readonly">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="final-shuffle" class="col-sm-4 control-label">Final shuffle:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="final-shuffle" readonly="readonly">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4"></div>
+                            <div class="col-sm-8">
+                                <a id="verify-link" class="btn btn-lg btn-info" target="_blank">Verify Shuffle</a>
+                            </div>
+                        </div>
+                        <h4>Next Shuffle</h4>
+                        <div class="form-group">
+                            <label for="next-client-seed" class="col-sm-4 control-label">Client seed:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="next-client-seed" readonly="readonly">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="next-hash-secret" class="col-sm-4 control-label">Hash secret:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="next-hash-secret" readonly="readonly">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+{% extends '../layouts/default.html' %}
+
+{% block main %}
+    <div class="page-wrapper">
+        <div id="provably-fair-panel" class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><span class="icon-uniE601"></span>&nbsp;Provably Fair</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-5 col-sm-5 col-md-5">
+                        <div class="provably-fair-form-wrapper">
+                            <h4>Game Verifier</h4><br/>
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label for="g-client-seed" class="col-sm-3 control-label">Client seed:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="g-client-seed" value="{{clientSeed}}" readonly="readonly">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="g-hash-secret" class="col-sm-3 control-label">Hash secret:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="g-hash-secret" value="{{hashSecret}}" readonly="readonly">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="g-server-seed" class="col-sm-3 control-label">Server seed:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="g-server-seed" value="{{serverSeed}}" readonly="readonly">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="g-initial-shuffle" class="col-sm-3 control-label">Initial shuffle:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="g-initial-shuffle" value="{{initialShuffle}}" readonly="readonly"><br/>
+                                        <textarea id="g-initial-shuffle-string" rows="2" class="form-control" readonly="readonly"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="g-final-shuffle" class="col-sm-3 control-label">Final shuffle:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="g-final-shuffle" value="{{finalShuffle}}" readonly="readonly"><br/>
+                                        <textarea id="g-final-shuffle-string" rows="2" class="form-control" readonly="readonly"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-3 col-sm-9">
+                                        <button type="button" class="btn btn-default" onclick="App.verify();">Verify Now</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <ul id="verification-result">
+                            <li class="secret_format" style="display: list-item;">Secret properly formatted</li>
+                            <li class="hash_secret" style="display: list-item;">Hash(secret) verified</li>
+                            <li class="final_shuffle" style="display: list-item;">Final shuffle derived from the mix of the initial shuffle</li>
+                            <li class="verified" style="display: list-item;">✓ Verified!</li>
+                            <li class="not_verified" style="display: none;">✗ Verification failed!</li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-7 col-sm-7 col-md-7">
+                        <div class="side">
+                            <h4>How does this work?</h4><br/>
+                            <p>Your computer will create a random string before each play round (client seed). After an initial shuffle, it uses this string to cut the deck before shuffling the deck a second time. Because our server does not know the random string your computer will send, there is no way for us to predict the shuffle.</p>
+                            <p>Prior to every play round, we show you both your secret string and a hash containing encoded shuffle data our server generated. After each play round we show you the strings from this hash. By combining these with your computers string and the hash, you can succesfully decode the complete shuffle and thus verify the legitimacy of the round.</p>
+                            <p>For your convenience, we made a script that allows you to quickly verify a round in a single click.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    <nav class="footer-nav">
+        <ul>
+            <li><a href="/faq">FAQ</a></li>
+            <li><a href="#">Support</a></li>
+            <li><a href="/terms">Terms &amp; Privacy</a></li>
+        </ul>
+    </nav>
+{% endblock %}

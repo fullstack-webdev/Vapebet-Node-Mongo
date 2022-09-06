@@ -1,0 +1,50 @@
+<header>
+    <div class="meta-bar">
+        <nav class="meta-nav">
+            <ul class="nav nav-pills pull-left">
+                <li><a>Welcome, {% if req.user %}{{req.user.username}}{% else %}Player{% endif %}</a></li>
+                <li><a href="/settings">Settings</a></li>
+                <li><a href="#">Transactions</a></li>
+                <li>
+                    {% if req.user %}<a href="/logout">Logout</a>{% else %}<a href="/login">Login</a>{% endif %}
+                </li>
+            </ul>
+            <ul class="nav nav-pills pull-right">
+                <li><a href="#">Support</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Currency <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Play money</a></li>
+                        <li><a href="#">Bitcoin</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="clearfix"></div>
+    <div class="main-bar">
+        <a href="/" title="Bitcoin Casino VapeBet" class="logo">VapeBet</a>
+        {% if page > 10 %}
+        <div class="btn-group nav-gselect">
+            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                Change Game <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li class="active"><a href="/blackjack">Blackjack</a></li>
+                <li><a href="#">Dice</a></li>
+                <li><a href="#">Minesweeper</a></li>
+            </ul>
+        </div>
+        {% endif %}
+        <div id="play-with-btc" class="balance-wrapper lost">
+            <label>Balance:</label>
+            <div class="balance">
+                {% if req.user %}
+                    <span id="balance" class="amount">{{req.user[req.user.balanceType].balance}}</span><span class="currency yellow">&nbsp;{{req.user.currency}}</span>
+                {% else %}
+                    <span id="balance" class="amount">1000</span><span class="currency yellow"> Play Money</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</header>

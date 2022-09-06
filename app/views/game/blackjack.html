@@ -1,0 +1,136 @@
+{% extends '../layouts/default.html' %}
+{% block main %}
+    <div id="g-blackjack" class="g-main-wrapper">
+        <div class="g-minmax">Min Bet: 1 Play Money<br>Max Bet: 100000 Play Money</div>
+        <div class="g-playfield">
+            <div class="game-area">
+                <div id="dealer-area">
+                    <div class="dealer-cards-wrap">
+                        <div id="dealer-cards"></div>
+                        <div id="dealer-total" class="card-score"></div>
+                    </div>
+                </div>
+                <div id="player-area">
+                    <div class="player-cards-wrap first-bundle">
+                        <div id="player-arrow-1" class="card-arrow"></div>
+                        <div id="player-cards-1"></div>
+                        <div id="player-total-1" class="card-score"></div>
+                    </div>
+                    <div class="player-cards-wrap second-bundle">
+                        <div id="player-arrow-2" class="card-arrow"></div>
+                        <div id="player-cards-2"></div>
+                        <div id="player-total-2" class="card-score"></div>
+                    </div>
+                    <div class="player-cards-wrap third-bundle">
+                        <div id="player-arrow-3" class="card-arrow"></div>
+                        <div id="player-cards-3"></div>
+                        <div id="player-total-3" class="card-score"></div>
+                    </div>
+                    <div class="player-cards-wrap fourth-bundle">
+                        <div id="player-arrow-4" class="card-arrow"></div>
+                        <div id="player-cards-4"></div>
+                        <div id="player-total-4" class="card-score"></div>
+                    </div>
+                </div>
+                <div id="game-result"></div>
+            </div>
+        </div>
+        <div class="g-actions-wrapper">
+            <div class="g-actions">
+                <div id="bet-choices" class="g-actions-bet">
+                    <button id="split-bt" class="action" onclick="Blackjack.split();">Split</button>
+                    <button id="double-bt" class="action" onclick="Blackjack.doubledown();">Double</button>
+                    <button id="stand-bt" class="action" onclick="Blackjack.stand();">Stand</button>
+                    <button id="hit-bt" class="action" onclick="Blackjack.hit();">Hit</button>
+                    <button id="bet-bt" class="action" onclick="Blackjack.deal();">Bet</button>
+                    <span class="betinput">
+                        <input id="bet-amount" type="number" value="1" min="1" max="100000" pattern="[0-9]*" class="betsize"/>
+                    </span>
+                    <div class="operators">
+                        <button id="bet-multiplier" class="action operator"><small>x</small>2</button>
+                        <button id="bet-divider" class="action operator">½</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="g-meta">
+            <div id="provably-fair" class="meta-bt" data-toggle="modal" data-target="#provably-fair-modal">
+                <span class="icon-uniE601"></span> Provably Fair
+            </div>
+            <div id="view-help" class="meta-bt" data-toggle="modal" data-target="#rules-modal">Rules</div>
+            <div id="sound-toggle" class="meta-bt">
+                <span class="icon-volume-medium"></span>
+            </div>
+            <div id="keyboard-shortcuts-toggle" class="meta-bt" data-toggle="modal" data-target="#shortcuts-modal">
+                <span class="icon-keyboard"></span>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block modals %}
+    <div class="modal fade" id="rules-modal" tabindex="-1" role="dialog" aria-labelledby="rulesModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="rulesModalLabel">Game Rules</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Blackjack is a skill-based casino card game. The game is played against a dealer, and the object of blacjack is to beat the dealer's hand total, without exceeding 21.</p>
+                    <div class="advanced">
+                        <p>✱ Blackjack pays 3 to 2</p>
+                        <p>✱ Dealer peeks for Blackjack</p>
+                        <p>✱ Dealer hits soft 17</p>
+                        <p>✱ Can double after split</p>
+                        <p>✱ Can double on any first two cards</p>
+                        <p>✱ Split to up to 4 hands</p>
+                        <p>✱ Can resplit aces</p>
+                        <p>✱ Can not hit split aces</p>
+                        <p>✱ The game is played with eight decks.</p>
+                        <p>✱ Ace is the value of 1 or 11.</p>
+                    </div>
+                    <p class="house-edge">Expected Return to Player: 99.63%</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="shortcuts-modal" tabindex="-1" role="dialog" aria-labelledby="shortcutsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="shortcutsModalLabel">Keyboard Shortcuts</h4>
+                </div>
+                <div class="modal-body">
+                    <dl>
+                        <div class="shortcut-wrapper">
+                            <dt><div class="shortcut">Enter</div></dt>
+                            <dd>Bet / Hit</dd>
+                        </div>
+                        <div class="shortcut-wrapper">
+                            <dt><div class="shortcut">Space</div></dt>
+                            <dd>Stand</dd>
+                        </div>
+                        <div class="shortcut-wrapper">
+                            <dt><div class="shortcut">D</div></dt>
+                            <dd>Double</dd>
+                        </div>
+                        <div class="shortcut-wrapper">
+                            <dt><div class="shortcut">S</div></dt>
+                            <dd>Split</dd>
+                        </div>
+                        <div class="shortcut-wrapper">
+                            <dt><div class="shortcut">◄</div></dt>
+                            <dd>Halve Amount</dd>
+                        </div>
+                        <div class="shortcut-wrapper">
+                            <dt><div class="shortcut">►</div></dt>
+                            <dd>Double Amount</dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

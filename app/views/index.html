@@ -1,0 +1,95 @@
+{% extends './layouts/default.html' %}
+
+{% block main %}
+    <div class="page-wrapper">
+        <h1 class="hero-title">Fair Bitcoin Casino</h1>
+        <div class="games">
+            <h2 class="section-header">Choose your game:</h2>
+            <div class="game">
+                <a href="/blackjack" title="Play Bitcoin Blackjack">
+                    <div class="game-icon blackjack"></div>
+                    <h4 class="game-name">Blackjack</h4>
+                    <div class="game-cat">Card Games</div>
+                    <div class="game-url">
+                        <div class="game-mode">
+                            <div id="chose-game-play" class="mode-bt btc">Play Now</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="stats">
+            <div class="stat-wrapper">
+                <div class="stat total-games">
+                    <span id="total-games" class="stat-amount">13,454,344</span>
+                    <span class="stat-label">Games Played</span>
+                </div>
+            </div>
+            <div class="stat-wrapper">
+                <div class="stat total-win">
+                    <span id="total-win-amount" class="stat-amount">43,375,400 m฿</span>
+                    <span class="stat-label">Total Winnings</span>
+                </div>
+            </div>
+            <div class="stat-wrapper">
+                <div class="stat jackpot-amount">
+                    <span id="jackpot-amount" class="stat-amount">1,030 m฿</span>
+                    <span class="stat-label">Jackpot</span>
+                </div>
+            </div>
+        </div>
+        <div class="latest-winners-wrapper">
+            <div class="latest-winners">
+                <h4 class="section-header">Latest Winners</h4>
+            </div>
+        </div>
+        <div class="features">
+            <div class="feature-wrap">
+                <div class="feature">
+                    <div class="icon-uniE601"></div>
+                    <h2>Provably Fair</h2>
+                    <p>All shuffles are completely fair. <br>Verify for yourself.</p>
+                </div>
+            </div>
+            <div class="feature-wrap">
+                <div class="feature">
+                    <div class="icon-eye-blocked"></div>
+                    <h2>Anonymous</h2>
+                    <p>Sit down, play and cash out. <br>No questions asked.</p>
+                </div>
+            </div>
+            <div class="feature-wrap">
+                <div class="feature">
+                    <div class="icon-cloud"></div>
+                    <h2>No Downloads</h2>
+                    <p>Play instantly in your browser, without any extra downloads.</p>
+                </div>
+            </div>
+            <div class="feature-wrap">
+                <div class="feature">
+                    <div class="icon-clock2"></div>
+                    <h2>Instant Play</h2>
+                    <p>Deposits and withdrawals are processed immediately.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    <footer>
+        <nav class="footer-nav">
+            <ul>
+                <li><a href="/faq">FAQ</a></li>
+                <li><a href="#">Support</a></li>
+                <li><a href="/terms">Terms &amp; Privacy</a></li>
+            </ul>
+        </nav>
+    </footer>
+{% endblock %}
+
+{% block foot %}
+    <script type="text/javascript">
+        $(document).ready(function(){ main(PAGE_HOME); });
+    </script>
+{% endblock %}

@@ -1,0 +1,58 @@
+{
+  "name": "Vapebet",
+  "description": "Vapebet - web based casino app",
+  "version": "1.0.0",
+  "author": {
+      "name": "Andrey Dimitrov",
+      "email": "rails.it18@gmail.com"
+  },
+  "engines": {
+      "node": "0.10.x"
+  },
+  "scripts": {
+      "start": "NODE_PATH=./config:./app/controllers NODE_ENV=development ./node_modules/.bin/nodemon server.js",
+      "test": "make test"
+  },
+  "dependencies": {
+      "async": "latest",
+      "body-parser": "^1.8.2",
+      "compression": "^1.1.0",
+      "connect-flash": "^0.1.1",
+      "connect-mongo": "^0.4.1",
+      "cookie-parser": "^1.3.3",
+      "cookie-session": "^1.0.2",
+      "csurf": "^1.6.1",
+      "express": "^4.9.3",
+      "express-session": "^1.8.2",
+      "forever": "^0.11.1",
+      "method-override": "^2.2.0",
+      "mongoose": "^3.9.2",
+      "morgan": "^1.3.1",
+      "multer": "0.1.4",
+      "swig": "^1.4.2",
+      "view-helpers": "^0.1.5",
+      "winston": "^0.8.0",
+      "crypto": "latest",
+      "passport": "^0.2.0",
+      "passport-local": "^1.0.0",
+      "crypto-js": "latest",
+      "socket.io": "~0.9.16"
+  },
+  "devDependencies": {
+      "grunt": "~0.4.5",
+      "grunt-contrib-jshint": "~0.10.0",
+      "grunt-contrib-uglify": "~0.5.0",
+      "grunt-contrib-concat": "~0.5.0",
+      "grunt-contrib-qunit": "~0.5.2",
+      "grunt-contrib-watch": "~0.6.1"
+  },
+  "repository": {
+      "type": "git",
+      "url": "git@bitbucket.org:andrey-dimitrov/vapebet.git"
+  },
+  "keywords": [
+      "casino",
+      "blackjack",
+      "satoshi"
+  ]
+}
